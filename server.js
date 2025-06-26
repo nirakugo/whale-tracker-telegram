@@ -8,11 +8,10 @@ const PORT = process.env.PORT || 3000;
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const CHAT_ID = process.env.CHAT_ID;
 
-// Simulasi data whale
 const whaleData = {
     time: new Date().toLocaleString(),
     token: "PEPE",
-    ca: "3XxYZAbcDefGiHjKlmN...",
+    ca: "3XoYxZAbcDefgHijKlmn...",
     dex: "Raydium",
     swap: "120 SOL > 500M PEPE",
     liquidity: "$250,000",
@@ -21,7 +20,6 @@ const whaleData = {
     status: "SAFE"
 };
 
-// Function kirim ke Telegram
 async function sendToTelegram(data) {
     const message = `
 🐳 *WHALE BUY DETECTED* 🐳
@@ -33,7 +31,7 @@ Liquidity: ${data.liquidity}
 Owner: ${data.owner}
 Burn: ${data.burn}
 Status: ${data.status}
-`;
+    `;
 
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
@@ -45,7 +43,7 @@ Status: ${data.status}
         });
         console.log('✅ Message sent to Telegram');
     } catch (error) {
-        console.error('❌ Failed to send message', error.response?.data);
+        console.error('❌ Failed to send message', error.response.data);
     }
 }
 
